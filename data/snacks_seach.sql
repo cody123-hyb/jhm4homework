@@ -4,9 +4,10 @@ USE `APT2004`;
 SELECT ID, Category, Brand FROM snacks;
 
 --B.(ii)--
-SELECT Category, SalesCount FROM snacks 
+SELECT Category, SUM(SalesCount) FROM snacks 
 WHERE `Category` IN ('Chips', 'Chocolate') 
-ORDER BY `SalesCount` DESC;
+GROUP BY `Category`
+ORDER BY SUM(SalesCount) DESC;
 
 --B.(iii)--
 SELECT HealthyOption, AVG(SalesCount)
